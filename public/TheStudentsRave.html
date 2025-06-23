@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Students Rave - Ultimate Campus Night Festival</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  
+  
+</head>
+<body class="min-h-screen bg-black text-white poppins">
+
+  <!-- Floating Logo -->
+  <div id="floatingLogo" class="fixed bottom-6 right-6 w-16 h-16 z-50 cursor-pointer hover:scale-110 transition-transform duration-300">
+    <a href="#">
+      <img src="img/The Students Rave.png" alt="The Students Rave Logo" class="w-full h-full object-contain opacity-80 hover:opacity-100">
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <header class="fixed w-full bg-black bg-opacity-90 py-4 px-6 z-50 shadow-lg backdrop-blur-sm" id="Home">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-3">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center pulse">
+          <img src="img/The Students Rave.png" alt="Logo" class="w-6 h-6">
+        </div>
+        <h1 class="orbitron text-2xl gradient-text">The Students Rave</h1>
+      </a>
+      
+      <!-- Hamburger Button -->
+      <button id="navToggle" class="md:hidden text-white text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Nav Links -->
+      <nav id="navMenu" class="hidden md:flex flex-col md:flex-row items-center absolute md:static top-16 left-0 w-full md:w-auto bg-black md:bg-transparent z-40 md:z-auto shadow-lg md:shadow-none pt-3 mt-2">
+        <a href="#" onclick="scrollToTop()" class="block px-6 py-2 text-white hover:text-cyan-400 transition duration-300">
+          <i class="fas fa-home mr-2"></i> Home
+        </a>
+        <a href="#tickets" class="block px-6 py-2 text-white hover:text-cyan-400 transition duration-300">
+          <i class="fas fa-ticket-alt mr-2"></i> Tickets
+        </a>
+        <a href="#lineup" class="block px-6 py-2 text-white hover:text-cyan-400 transition duration-300">
+          <i class="fas fa-users mr-2"></i> Lineup
+        </a>
+        <a href="#sponsors" class="block px-6 py-2 text-white hover:text-cyan-400 transition duration-300">
+          <i class="fas fa-star mr-2"></i> Sponsors
+        </a>
+        <a href="#contact" class="block px-6 py-2 text-white hover:text-cyan-400 transition duration-300">
+          <i class="fas fa-envelope mr-2"></i> Contact
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-70"></div>
+    <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover -z-10">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-dancing-under-neon-lights-1230-large.mp4" type="video/mp4">
+    </video>
+    
+    <div class="container mx-auto text-center relative z-10 slide-in">
+      <h2 class="orbitron text-4xl md:text-6xl lg:text-7xl font-bold mb-6 glow">
+        Experience the Ultimate <span class="gradient-text">Campus Night</span> Festival
+      </h2>
+      <p class="text-xl md:text-2xl mb-8">
+        <i class="fas fa-calendar-day mr-2"></i> April 25, 2026 • <i class="fas fa-clock mr-2"></i> 7 PM – 2 AM • <i class="fas fa-map-marker-alt mr-2"></i> Campus Forecourt
+      </p>
+      
+      <div class="flex justify-center gap-4 mb-10">
+        <div class="text-center px-4">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="text-center px-4">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="text-center px-4">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="text-center px-4">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#tickets" class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-black hover:from-cyan-600 hover:to-blue-600 transition duration-300 transform hover:scale-105 shadow-lg shadow-cyan-500/30 flex items-center">
+          <i class="fas fa-ticket-alt mr-2"></i> Get Tickets
+        </a>
+        <a href="#lineup" class="px-8 py-3 border-2 border-cyan-400 text-cyan-400 rounded-full font-bold hover:bg-cyan-400 hover:bg-opacity-10 transition duration-300 transform hover:scale-105 flex items-center">
+          <i class="fas fa-music mr-2"></i> View Lineup
+        </a>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-10 left-0 right-0 text-center">
+      <a href="#highlights" class="text-white animate-bounce inline-block">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+  </section>
+
+  
+
+  <!-- Highlights Section -->
+  <section id="highlights" class="py-20 px-4 fade-in">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Event Highlights</h2>
+        <p class="max-w-2xl mx-auto text-gray-300">An unforgettable night packed with amazing performances, interactive experiences, and vibrant energy</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="highlight-card rounded-xl p-6 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center">
+            <i class="fas fa-headphones text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Live DJs & Artists</h3>
+          <p class="text-gray-300">Top student DJs and surprise guest artists lighting up the night with electrifying performances.</p>
+        </div>
+        
+        <div class="highlight-card rounded-xl p-6 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+            <i class="fas fa-fire text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Fire Performances</h3>
+          <p class="text-gray-300">Breathtaking fire breathers and dancers that will ignite your excitement for the night.</p>
+        </div>
+        
+        <div class="highlight-card rounded-xl p-6 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+            <i class="fas fa-lightbulb text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">LED Dancers</h3>
+          <p class="text-gray-300">Vibrant LED-lit performers bringing the rhythm to life with mesmerizing light shows.</p>
+        </div>
+        
+        <div class="highlight-card rounded-xl p-6 text-center">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-yellow-400 to-red-500 flex items-center justify-center">
+            <i class="fas fa-utensils text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Food & Drinks</h3>
+          <p class="text-gray-300">Gourmet food trucks and specialty drink stations to fuel your night of dancing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-16 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Gallery</h2>
+        <p class="max-w-2xl mx-auto text-gray-300">Relive the magic from previous events</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="relative group overflow-hidden rounded-xl">
+          <img src="img/Dj.jpg" alt="DJ Performance" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+            <div>
+              <h3 class="text-white text-xl font-bold">DJ Set</h3>
+              <p class="text-gray-300">2024 Event</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative group overflow-hidden rounded-xl">
+          <img src="img/Crowd.jpg" alt="Crowd" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+            <div>
+              <h3 class="text-white text-xl font-bold">Vibrant Crowd</h3>
+              <p class="text-gray-300">2024 Event</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative group overflow-hidden rounded-xl">
+          <img src="img/light.jpg" alt="Light Show" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+            <div>
+              <h3 class="text-white text-xl font-bold">Light Show</h3>
+              <p class="text-gray-300">2024 Event</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lineup Section -->
+  <section id="lineup" class="py-20 px-4">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Artist Lineup</h2>
+        <p class="max-w-2xl mx-auto text-gray-300">Discover the incredible talent performing at this year's event</p>
+      </div>
+      
+      <div class="flex overflow-x-auto pb-6 custom-scrollbar gap-6">
+        <div class="flex-shrink-0 w-64 bg-black bg-opacity-50 rounded-xl p-6 hover:bg-opacity-70 transition duration-300">
+          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="DJ Spark" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">DJ Spark</h3>
+          <p class="text-cyan-400 text-center mb-3">10:00 PM - 11:30 PM</p>
+          <div class="flex justify-center space-x-3">
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-soundcloud"></i></a>
+          </div>
+        </div>
+        
+        <div class="flex-shrink-0 w-64 bg-black bg-opacity-50 rounded-xl p-6 hover:bg-opacity-70 transition duration-300">
+          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="The Neon Collective" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">The Neon Collective</h3>
+          <p class="text-cyan-400 text-center mb-3">9:00 PM - 10:00 PM</p>
+          <div class="flex justify-center space-x-3">
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="flex-shrink-0 w-64 bg-black bg-opacity-50 rounded-xl p-6 hover:bg-opacity-70 transition duration-300">
+          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-red-500 to-orange-500 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Bass Queen" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">Bass Queen</h3>
+          <p class="text-cyan-400 text-center mb-3">11:30 PM - 1:00 AM</p>
+          <div class="flex justify-center space-x-3">
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        
+        <div class="flex-shrink-0 w-64 bg-black bg-opacity-50 rounded-xl p-6 hover:bg-opacity-70 transition duration-300">
+          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-400 to-blue-500 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Synthwave Surfer" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">Synthwave Surfer</h3>
+          <p class="text-cyan-400 text-center mb-3">8:00 PM - 9:00 PM</p>
+          <div class="flex justify-center space-x-3">
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-bandcamp"></i></a>
+          </div>
+        </div>
+        
+        <div class="flex-shrink-0 w-64 bg-black bg-opacity-50 rounded-xl p-6 hover:bg-opacity-70 transition duration-300">
+          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-r from-yellow-400 to-red-500 overflow-hidden">
+            <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Electric Dreams" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">Electric Dreams</h3>
+          <p class="text-cyan-400 text-center mb-3">7:30 PM - 8:30 PM</p>
+          <div class="flex justify-center space-x-3">
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-spotify"></i></a>
+            <a href="#" class="text-gray-400 hover:text-cyan-400 transition"><i class="fab fa-apple"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tickets Section -->
+  <section id="tickets" class="py-20 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="container mx-auto text-center">
+      <h2 class="orbitron text-4xl font-bold gradient-text mb-4">Get Your Tickets</h2>
+      <p class="text-gray-300 mb-10 max-w-xl mx-auto">Click a ticket tier to continue purchase</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div onclick="openTicketForm('Early Bird')" class="ticket-card cursor-pointer rounded-xl p-8 text-center hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-4">Early Bird</h3>
+          <div class="text-4xl font-bold mb-6 gradient-text">$25</div>
+          <p class="text-gray-400">Limited access<br>General Admission only</p>
+        </div>
+        <div onclick="openTicketForm('General Admission')" class="ticket-card cursor-pointer rounded-xl p-8 text-center hover:scale-105 transition relative">
+          <div class="absolute top-0 right-0 bg-cyan-500 text-black text-xs font-bold px-2 py-1 rounded-bl">Most Popular</div>
+          <h3 class="text-xl font-bold mb-4">General Admission</h3>
+          <div class="text-4xl font-bold mb-6 gradient-text">$40</div>
+          <p class="text-gray-400">Student Discount<br>Standard Entry</p>
+        </div>
+        <div onclick="openTicketForm('VIP Experience')" class="ticket-card cursor-pointer rounded-xl p-8 text-center hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-4">VIP Experience</h3>
+          <div class="text-4xl font-bold mb-6 gradient-text">$75</div>
+          <p class="text-gray-400">VIP Lounge • Fast Track • Meet & Greet</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden Ticket Purchase Form Section -->
+  <section id="ticketFormSection" class="hidden py-20 px-4 bg-black bg-opacity-90 min-h-screen flex items-center justify-center fixed inset-0 z-50">
+    <div class="bg-gray-900 bg-opacity-80 p-8 rounded-xl w-full max-w-md text-white backdrop-blur-sm">
+      <button onclick="closeTicketForm()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+      <h2 class="orbitron text-2xl font-bold gradient-text mb-6 text-center">Complete Your Ticket Purchase</h2>
+      <form id="ticketForm" class="space-y-4">
+        <div>
+          <label for="ticketName" class="block text-sm font-medium mb-1">Your Name</label>
+          <input type="text" id="ticketName" placeholder="Enter your full name" required class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-500">
+        </div>
+        <div>
+          <label for="ticketEmail" class="block text-sm font-medium mb-1">Your Email</label>
+          <input type="email" id="ticketEmail" placeholder="Enter your email" required class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-500">
+        </div>
+        <div>
+          <label for="selectedTicketType" class="block text-sm font-medium mb-1">Ticket Type</label>
+          <input type="text" id="selectedTicketType" readonly class="w-full px-4 py-2 rounded-lg bg-gray-700 text-cyan-400 font-bold text-center">
+        </div>
+        <div>
+          <label for="ticketQuantity" class="block text-sm font-medium mb-1">Quantity</label>
+          <select id="ticketQuantity" class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-500">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-black hover:from-cyan-600 hover:to-blue-600 transition duration-300 mt-4">
+          <i class="fas fa-shopping-cart mr-2"></i> Purchase Now
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Sponsors Section -->
+  <section id="sponsors" class="py-20 px-4">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Our Sponsors</h2>
+        <p class="max-w-3xl mx-auto text-gray-300">
+          The Students Rave is proud to be powered by forward-thinking brands that believe in the energy and creativity of student communities.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-center mb-12">
+        <div class="sponsor-logo flex items-center justify-center p-4">
+          <i class="fab fa-reddit text-5xl text-red-500"></i>
+        </div>
+        <div class="sponsor-logo flex items-center justify-center p-4">
+          <i class="fab fa-spotify text-5xl text-green-500"></i>
+        </div>
+        <div class="sponsor-logo flex items-center justify-center p-4">
+          <i class="fab fa-apple text-5xl text-gray-300"></i>
+        </div>
+        <div class="sponsor-logo flex items-center justify-center p-4">
+          <i class="fab fa-soundcloud text-5xl text-orange-500"></i>
+        </div>
+        <div class="sponsor-logo flex items-center justify-center p-4">
+          <i class="fab fa-tiktok text-5xl text-black"></i>
+        </div>
+      </div>
+      
+      <div class="max-w-3xl mx-auto bg-black bg-opacity-50 rounded-xl p-8 backdrop-blur-sm">
+        <h3 class="text-xl font-bold mb-4 text-center gradient-text">Why Sponsor Us?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-2 rounded-lg mr-4">
+              <i class="fas fa-chart-line text-cyan-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Unrivaled Campus Reach</h4>
+              <p class="text-gray-300 text-sm">Direct access to thousands of engaged students and young adults.</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-2 rounded-lg mr-4">
+              <i class="fas fa-bullhorn text-cyan-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Dynamic Brand Exposure</h4>
+              <p class="text-gray-300 text-sm">Creative integration opportunities throughout the event experience.</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-2 rounded-lg mr-4">
+              <i class="fas fa-handshake text-cyan-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Engagement Opportunities</h4>
+              <p class="text-gray-300 text-sm">Interactive activations to connect with your target audience.</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-2 rounded-lg mr-4">
+              <i class="fas fa-camera text-cyan-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Content Collaboration</h4>
+              <p class="text-gray-300 text-sm">Co-create authentic content with student influencers.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+          <p class="mb-6 text-gray-300">
+            <strong>Want to Join the Lineup of Sponsors?</strong><br>
+            Partner with us and position your brand where it matters most—at the heart of campus culture.
+          </p>
+          <a href="mailto:studentsraveofficial@gmail.com" class="inline-block px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-black hover:from-cyan-600 hover:to-blue-600 transition duration-300">
+            <i class="fas fa-envelope mr-2"></i> Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section id="partners" class="py-20 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Our School Partners</h2>
+        <p class="max-w-3xl mx-auto text-gray-300">
+          We proudly collaborate with student bodies, university departments, and academic institutions to bring this experience to life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="hover:scale-105 transition duration-300 w-36 h-36 mx-auto">
+          <img src="img/download.jpeg" alt="Partner 1" class="w-full h-full object-cover rounded-full shadow-md">
+        </div>
+        
+        <div class="hover:scale-105 transition duration-300 w-36 h-36 mx-auto">
+          <img src="img/knust.png" alt="Partner 2" class="w-full h-full object-cover rounded-full shadow-md">
+        </div>
+        
+        <div class="hover:scale-105 transition duration-300 w-36 h-36 mx-auto">
+          <img src="img/csuc.jpeg" alt="Partner 3" class="w-full h-full object-cover rounded-full shadow-md">
+        </div>
+        
+        <div class="hover:scale-105 transition duration-300 w-36 h-36 mx-auto">
+          <img src="img/aamusted.jpeg" alt="Partner 4" class="w-full h-full object-cover rounded-full shadow-md">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="orbitron text-3xl md:text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
+        <p class="max-w-2xl mx-auto text-gray-300">Have questions? Want to volunteer or perform? Reach out to us!</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <form class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-1">Name</label>
+              <input type="text" id="name" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1">Email</label>
+              <input type="email" id="email" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium mb-1">Subject</label>
+              <select id="subject" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent">
+                <option>General Inquiry</option>
+                <option>Sponsorship</option>
+                <option>Performance Opportunity</option>
+                <option>Volunteer</option>
+                <option>Press</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1">Message</label>
+              <textarea id="message" rows="4" class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-black hover:from-cyan-600 hover:to-blue-600 transition duration-300">
+              <i class="fas fa-paper-plane mr-2"></i> Send Message
+            </button>
+          </form>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-3 rounded-lg mr-4">
+              <i class="fas fa-envelope text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Email Us</h3>
+              <a href="mailto:studentsraveofficial@gmail.com" class="text-cyan-400 hover:underline">studentsraveofficial@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-3 rounded-lg mr-4">
+              <i class="fas fa-map-marker-alt text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Location</h3>
+              <p class="text-gray-300">Campus Forecourt, Garden City University College</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="bg-cyan-500 bg-opacity-20 p-3 rounded-lg mr-4">
+              <i class="fas fa-clock text-cyan-400"></i>
+            </div>
+            <div>
+              <h3 class="font-bold mb-1">Event Hours</h3>
+              <p class="text-gray-300">April 25, 2025 • 7:00 PM - 2:00 AM</p>
+            </div>
+          </div>
+          
+          <div class="pt-4">
+            <h3 class="font-bold mb-4">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="social-icon text-white text-xl w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon text-white text-xl w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon text-white text-xl w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon text-white text-xl w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center">
+                <i class="fab fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-4 bg-black bg-opacity-90 backdrop-blur-sm">
+    <div class="container mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-4 mb-6 md:mb-0">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center">
+            <img src="img/The Students Rave.png" alt="The Students Rave Logo" class="w-6 h-6">
+          </div>
+          <span class="orbitron gradient-text">The Students Rave</span>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">Home</a>
+          <a href="#tickets" class="text-gray-400 hover:text-cyan-400 transition">Tickets</a>
+          <a href="#lineup" class="text-gray-400 hover:text-cyan-400 transition">Lineup</a>
+          <a href="#sponsors" class="text-gray-400 hover:text-cyan-400 transition">Sponsors</a>
+          <a href="#contact" class="text-gray-400 hover:text-cyan-400 transition">Contact</a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">FAQ</a>
+        </div>
+        
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-facebook-f text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-tiktok text-xl"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 The Students Rave. All rights reserved.</p>
+        <p class="mt-2">Designed with <i class="fas fa-heart text-red-500"></i> for students everywhere</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

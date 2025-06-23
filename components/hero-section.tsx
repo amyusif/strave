@@ -50,10 +50,17 @@ const HeroSection = ({ onGetTickets }: HeroSectionProps) => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-          <source src="/placeholder.svg?height=1080&width=1920" type="video/mp4" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover brightness-90"
+        >
+          <source src="/bgvideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80 pointer-events-none" />
       </div>
 
       {/* Content */}
