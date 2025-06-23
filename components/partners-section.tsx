@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 
 const PartnersSection = () => {
   const partners = [
-    { name: "University of Ghana", image: "/placeholder.svg?height=150&width=150" },
-    { name: "KNUST", image: "/placeholder.svg?height=150&width=150" },
-    { name: "CSUC", image: "/placeholder.svg?height=150&width=150" },
-    { name: "AAMUSTED", image: "/placeholder.svg?height=150&width=150" },
+    { name: "Garden City University", image: "/gcuc.png" },
+    { name: "KNUST", image: "/knust.png" },
+    { name: "CSUC", image: "/csuc.jpeg" },
+    { name: "AAMUSTED", image: "/aamusted.jpeg" },
   ]
 
   return (
@@ -40,12 +40,20 @@ const PartnersSection = () => {
               whileHover={{ scale: 1.05 }}
               className="flex flex-col items-center"
             >
-              <div className="w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden shadow-lg hover:shadow-cyan-500/25 transition-shadow duration-300">
-                <img
-                  src={partner.image || "/placeholder.svg"}
-                  alt={partner.name}
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden shadow-lg hover:shadow-cyan-500/25 transition-shadow duration-300 flex items-center justify-center bg-white">
+                {partner.name === "Garden City University" ? (
+                  <img
+                    src={partner.image}
+                    alt={partner.name}
+                    className="object-contain w-28 h-28"
+                  />
+                ) : (
+                  <img
+                    src={partner.image || "/placeholder.svg"}
+                    alt={partner.name}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
               <h3 className="text-center text-white font-semibold">{partner.name}</h3>
             </motion.div>
