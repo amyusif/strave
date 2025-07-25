@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface EventsSectionProps {
-  onGetTickets: (ticketType: string) => void
+  onGetTickets: (ticketType: string) => void;
 }
 
 const EventsSection = ({ onGetTickets }: EventsSectionProps) => {
@@ -14,34 +14,37 @@ const EventsSection = ({ onGetTickets }: EventsSectionProps) => {
       title: "AKWAABA RAVE",
       date: "April 20",
       description: "DJ Bassline • LED Dome",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/akwaaba.webp",
       ticketType: "Early Bird",
     },
     {
       title: "Glowfest",
       date: "April 22",
       description: "Fire Dancers • Food Trucks",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/glowfest.jpg",
       ticketType: "General Admission",
     },
     {
       title: "Bass Drop",
       date: "April 23",
       description: "Bass Queen • Laser Show",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/bass_Drop.jpg",
       ticketType: "VIP Experience",
     },
     {
       title: "Final Countdown",
       date: "April 24",
       description: "All-Star Lineup • Fireworks",
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/finalcountdown.jpg",
       ticketType: "VIP Experience",
     },
-  ]
+  ];
 
   return (
-    <section id="events" className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+    <section
+      id="events"
+      className="py-20 px-4 bg-gradient-to-b from-black to-gray-900"
+    >
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -74,12 +77,12 @@ const EventsSection = ({ onGetTickets }: EventsSectionProps) => {
                     alt={event.title}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
+                  {/* Overlay for readability on hover */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-80 transition-opacity duration-300 z-10" />
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileHover={{ opacity: 1, y: 0 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 flex flex-col items-center justify-center text-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
                   >
                     <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                       {event.title}
@@ -102,7 +105,7 @@ const EventsSection = ({ onGetTickets }: EventsSectionProps) => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default EventsSection
+export default EventsSection;

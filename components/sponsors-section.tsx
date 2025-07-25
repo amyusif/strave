@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { TrendingUp, Megaphone, Users, Camera, Mail } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { TrendingUp, Megaphone, Users, Camera, Mail } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const SponsorsSection = () => {
   const sponsors = [
@@ -12,30 +12,33 @@ const SponsorsSection = () => {
     { name: "SoundCloud", color: "text-orange-500" },
     { name: "TikTok", color: "text-pink-500" },
     { name: "YouTube", color: "text-red-500" },
-  ]
+  ];
 
   const benefits = [
     {
       icon: TrendingUp,
       title: "Unrivaled Campus Reach",
-      description: "Direct access to thousands of engaged students and young adults.",
+      description:
+        "Direct access to thousands of engaged students and young adults.",
     },
     {
       icon: Megaphone,
       title: "Dynamic Brand Exposure",
-      description: "Creative integration opportunities throughout the event experience.",
+      description:
+        "Creative integration opportunities throughout the event experience.",
     },
     {
       icon: Users,
       title: "Engagement Opportunities",
-      description: "Interactive activations to connect with your target audience.",
+      description:
+        "Interactive activations to connect with your target audience.",
     },
     {
       icon: Camera,
       title: "Content Collaboration",
       description: "Co-create authentic content with student influencers.",
     },
-  ]
+  ];
 
   return (
     <section id="sponsors" className="py-20 px-4 bg-black">
@@ -51,8 +54,8 @@ const SponsorsSection = () => {
             Our Sponsors
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            The Students Rave is proud to be powered by forward-thinking brands that believe in the energy and
-            creativity of student communities.
+            The Students Rave is proud to be powered by forward-thinking brands
+            that believe in the energy and creativity of student communities.
           </p>
         </motion.div>
 
@@ -62,7 +65,7 @@ const SponsorsSection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center mb-16"
+          className="flex flex-wrap justify-center items-center gap-6 mb-16"
         >
           {sponsors.map((sponsor, index) => (
             <motion.div
@@ -72,9 +75,13 @@ const SponsorsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.1 }}
-              className="flex items-center justify-center p-4"
+              className="flex items-center justify-center p-4 min-w-[120px] w-full sm:w-auto"
             >
-              <div className={`text-5xl font-bold ${sponsor.color}`}>{sponsor.name}</div>
+              <div
+                className={`text-5xl font-bold ${sponsor.color} text-center w-full`}
+              >
+                {sponsor.name}
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -106,8 +113,12 @@ const SponsorsSection = () => {
                     <benefit.icon className="text-cyan-400" size={20} />
                   </div>
                   <div>
-                    <h4 className="font-bold mb-2 text-white">{benefit.title}</h4>
-                    <p className="text-gray-300 text-sm">{benefit.description}</p>
+                    <h4 className="font-bold mb-2 text-white">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      {benefit.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -121,9 +132,12 @@ const SponsorsSection = () => {
               className="text-center"
             >
               <p className="mb-6 text-gray-300">
-                <strong className="text-white">Want to Join the Lineup of Sponsors?</strong>
+                <strong className="text-white">
+                  Want to Join the Lineup of Sponsors?
+                </strong>
                 <br />
-                Partner with us and position your brand where it matters most—at the heart of campus culture.
+                Partner with us and position your brand where it matters most—at
+                the heart of campus culture.
               </p>
               <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold px-8 py-3 rounded-full">
                 <Mail className="mr-2" size={18} />
@@ -134,7 +148,7 @@ const SponsorsSection = () => {
         </Card>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default SponsorsSection
+export default SponsorsSection;
