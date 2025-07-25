@@ -320,18 +320,11 @@ const TicketModal = ({ isOpen, onClose, ticketType }: TicketModalProps) => {
                 </SelectContent>
               </Select>
             </div>
-
-            <Button
-              type="submit"
-              className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold py-3 rounded-full"
-            >
-              <ShoppingCart className="mr-2" size={18} />
-              Purchase Now
-            </Button>
           </motion.form>
+          {/* Only show Pay with Paystack button */}
           <Button
             type="button"
-            className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full"
+            className="w-full mt-4 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold py-3 rounded-full"
             onClick={handlePaystack}
             disabled={
               loading ||
@@ -342,7 +335,7 @@ const TicketModal = ({ isOpen, onClose, ticketType }: TicketModalProps) => {
               !paystackReady
             }
           >
-            {loading ? "Processing..." : "Pay with Paystack"}
+            {loading ? "Processing..." : "Purchase"}
           </Button>
         </DialogContent>
       </Dialog>
