@@ -13,19 +13,19 @@ const TicketsSection = ({ onTicketSelect }: TicketsSectionProps) => {
   const tickets = [
     {
       type: "Early Bird",
-      price: "$25",
+      price: "GH₵25",
       description: "Limited access\nGeneral Admission only",
       popular: false,
     },
     {
       type: "General Admission",
-      price: "$40",
+      price: "GH₵40",
       description: "Student Discount\nStandard Entry",
       popular: true,
     },
     {
       type: "VIP Experience",
-      price: "$75",
+      price: "GH₵75",
       description: "VIP Lounge • Fast Track • Meet & Greet",
       popular: false,
     },
