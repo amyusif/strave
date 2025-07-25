@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import TicketReceiptModal from "./ticket-receipt-modal";
 import { supabase } from "@/lib/supabase";
 
 interface TicketModalProps {
@@ -48,8 +49,9 @@ const TicketModal = ({ isOpen, onClose, ticketType }: TicketModalProps) => {
     quantity: "1",
   });
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const [paystackReady, setPaystackReady] = useState(false);
+  const [showReceipt, setShowReceipt] = useState(false);
+  const [receiptTicket, setReceiptTicket] = useState<any>(null);
 
   // Update ticketType in formData if prop changes (for modal re-open)
   useEffect(() => {
@@ -159,14 +161,11 @@ const TicketModal = ({ isOpen, onClose, ticketType }: TicketModalProps) => {
                 return;
               }
               // Debug log
-              const ticketId = data && data[0] && data[0].id;
-              console.log("Ticket insert data:", data, "Ticket ID:", ticketId);
-              if (ticketId) {
-                // Wait 1 second before redirecting to ensure ticket is available
-                setTimeout(() => {
-                  setLoading(false);
-                  router.push(`/receipt?id=${ticketId}`);
-                }, 1000);
+              const ticket = data && data[0];
+              console.log("Ticket insert data:", data, "Ticket:", ticket);
+              if (ticket && ticket.id) {
+                setReceiptTicket(ticket);
+                setShowReceipt(true);
               } else {
                 setLoading(false);
                 alert(
@@ -214,134 +213,146 @@ const TicketModal = ({ isOpen, onClose, ticketType }: TicketModalProps) => {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent text-center">
-            Complete Your Ticket Purchase
-          </DialogTitle>
-        </DialogHeader>
+    <>
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent text-center">
+              Complete Your Ticket Purchase
+            </DialogTitle>
+          </DialogHeader>
 
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          onSubmit={handleSubmit}
-          className="space-y-6 mt-6"
-        >
-          <div>
-            <Label htmlFor="name" className="text-sm font-medium text-gray-300">
-              Your Name
-            </Label>
-            <Input
-              id="name"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500"
-              required
-            />
-          </div>
-
-          <div>
-            <Label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-300"
-            >
-              Your Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500"
-              required
-            />
-          </div>
-
-          <div>
-            <Label
-              htmlFor="ticketType"
-              className="text-sm font-medium text-gray-300"
-            >
-              Ticket Type
-            </Label>
-            <Select
-              value={formData.ticketType}
-              onValueChange={(value) =>
-                setFormData({ ...formData, ticketType: value })
-              }
-            >
-              <SelectTrigger className="mt-1 bg-gray-800 border-gray-600 text-cyan-400 font-bold text-center">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-600">
-                {ticketTypes.map((type) => (
-                  <SelectItem key={type} value={type}>
-                    {type}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <Label
-              htmlFor="quantity"
-              className="text-sm font-medium text-gray-300"
-            >
-              Quantity
-            </Label>
-            <Select
-              value={formData.quantity}
-              onValueChange={(value) =>
-                setFormData({ ...formData, quantity: value })
-              }
-            >
-              <SelectTrigger className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-600">
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <SelectItem key={num} value={num.toString()}>
-                    {num}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold py-3 rounded-full"
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            onSubmit={handleSubmit}
+            className="space-y-6 mt-6"
           >
-            <ShoppingCart className="mr-2" size={18} />
-            Purchase Now
+            {/* ...existing code for form fields... */}
+            <div>
+              <Label
+                htmlFor="name"
+                className="text-sm font-medium text-gray-300"
+              >
+                Your Name
+              </Label>
+              <Input
+                id="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500"
+                required
+              />
+            </div>
+
+            <div>
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-300"
+              >
+                Your Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500"
+                required
+              />
+            </div>
+
+            <div>
+              <Label
+                htmlFor="ticketType"
+                className="text-sm font-medium text-gray-300"
+              >
+                Ticket Type
+              </Label>
+              <Select
+                value={formData.ticketType}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, ticketType: value })
+                }
+              >
+                <SelectTrigger className="mt-1 bg-gray-800 border-gray-600 text-cyan-400 font-bold text-center">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600">
+                  {ticketTypes.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label
+                htmlFor="quantity"
+                className="text-sm font-medium text-gray-300"
+              >
+                Quantity
+              </Label>
+              <Select
+                value={formData.quantity}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, quantity: value })
+                }
+              >
+                <SelectTrigger className="mt-1 bg-gray-800 border-gray-600 text-white focus:border-cyan-500">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-800 border-gray-600">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <SelectItem key={num} value={num.toString()}>
+                      {num}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-bold py-3 rounded-full"
+            >
+              <ShoppingCart className="mr-2" size={18} />
+              Purchase Now
+            </Button>
+          </motion.form>
+          <Button
+            type="button"
+            className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full"
+            onClick={handlePaystack}
+            disabled={
+              loading ||
+              !formData.name ||
+              !formData.email ||
+              !formData.ticketType ||
+              !formData.quantity ||
+              !paystackReady
+            }
+          >
+            {loading ? "Processing..." : "Pay with Paystack"}
           </Button>
-        </motion.form>
-        <Button
-          type="button"
-          className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-full"
-          onClick={handlePaystack}
-          disabled={
-            loading ||
-            !formData.name ||
-            !formData.email ||
-            !formData.ticketType ||
-            !formData.quantity ||
-            !paystackReady
-          }
-        >
-          {loading ? "Processing..." : "Pay with Paystack"}
-        </Button>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+      {/* Show ticket receipt modal after payment */}
+      <TicketReceiptModal
+        open={showReceipt}
+        onClose={() => setShowReceipt(false)}
+        ticket={receiptTicket}
+      />
+    </>
   );
 };
 
